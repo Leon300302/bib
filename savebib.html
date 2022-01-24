@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>save</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="stylepages.css">
+    <link rel="stylesheet" href="cube_save.css">
+
+
+
+
+
+
+    <style>
+input[type=text] {
+  width: 155px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 10px 12px 10px;
+  transition: width 3s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="navbar" style="font-family: Arial;">
+    <a href="index.html">Home</a>
+</div>
+
+<br>
+<br>
+<br>
+
+<form method="POST" action ="sub.php">
+    <font color=white>
+        <fieldset style="margin: 5px 50px; border-color:#000000;">
+            <h2>Speichern</h2>
+        </fieldset>
+
+
+    <fieldset class="field_save" style = "width: 600px; height: 575px; margin:  25px 50px; border-color: #2D762E; border-radius: 20px;">
+        <fieldset style="margin: 15px 15px; border-color:#000000;">
+            <br>
+
+            Buchname:
+            <br>
+            <br>
+            <input type="text" name="title" placeholder="Gib den Titel ein." >
+            <br>
+            <br>
+            <br>
+
+
+            Autor:
+            <br>
+            <br>
+            <input type="text" name="autor" placeholder="Gib den Autor ein." >
+            <br>
+            <br>
+            <br>
+
+            Genre:
+            <br>
+            <br>
+            <select name="genre" style="height:40px; width:150px; font-size: 16px;border:2px solid;  border-radius: 8px;">
+            <option value="Genre1">Genre1</option>
+            <option value="Genre2">Genre2</option>
+            <option value="Genre3">Genre3</option>
+            <option value="Genre4">Genre4</option>
+            <option value="Genre5">Genre5</option>
+        </select>
+            <br>
+            <br>
+            <br>
+
+            Ablageort:
+            <br>
+            <br>
+            <select name="place" style="height:40px; width:150px; font-size: 16px;border:2px solid;  border-radius: 8px;">
+            <option value="Fach 1">Fach 1</option>
+            <option value="Fach 2">Fach 2</option>
+            <option value="Fach 3">Fach 3</option>
+            <option value="Fach 4">Fach 4</option>
+            <option value="Fach 5">Fach 5</option>
+            <option value="Fach 6">Fach 6</option>
+            <option value="Fach 7">Fach 7</option>
+        </select>
+            <br>
+            <br>
+            <br>
+
+            <button class="button-123" type="SUBMIT">
+                <span>Speichern</span>
+            </button>
+        </fieldset>
+
+    </fieldset>
+    </font>
+</form>
+<br>
+<br>
+<br>
+<div class="cube">
+    <div class="top"></div>
+    <div>
+        <span style="--i:0;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+    </div>
+
+</div>
+
+
+<footer  style="color: white; font-size: 16px; padding:20px; font-family:arial;">
+
+    <a style="color: white; text-decoration:none; padding: 25px" href="about_me.html">About Me </a>
+
+    ©random stuff
+
+</footer>
+
+
+</body>
+</html>
+
+<!--
+
+text-align: center;
+padding: 3px;
+background-color: DarkSalmon;
+color: white;

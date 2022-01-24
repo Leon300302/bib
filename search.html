@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>show</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="stylepages.css">
+    <link rel="stylesheet" href="cube_show.css">
+
+
+
+    <style>
+input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 3s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+
+
+
+
+</head>
+<body>
+
+<div class="navbar" style="font-family: Arial;">
+    <a href="index.html">Home</a>
+</div>
+
+<br>
+<br>
+<br>
+
+<form method="post" action="show.php">
+
+
+    <?php
+include("include/function.php");
+$name=$_POST["title"];
+$ablage=$_POST["place"];
+$autor=$_POST["autor"];
+$genre=$_POST["genre"];
+
+
+
+
+
+
+$check_login= show_datas($name,$ablage,$autor,$genre);
+   if ($check_login)
+   {
+   /* Hintergrund schwarz */
+   echo "<body style='background-color:black'>";
+?>
+
+    <br>
+
+    <h2>Auswertung </h2>
+    <br>
+    <font color='white'>Titel suchen:
+
+    <input id='search' type='text' placeholder='Gib den Titel ein.' onKeyup='search();'>
+    <br> <br>
+<?php
+    $show_data=show_datas($name,$ablage,$autor,$genre);
+    #var_dump($show_data);
+?>
+    <table border='1'>
+        <th><font color='white'>id</font> </th>
+        <th><font color='white'>Buchname</font> </th>
+        <th><font color='white'>Autor</font> </th>
+        <th><font color='white'>Ablageort</font> </th>
+        <th><font color='white'>Genre</font> </th>
+        <th><font color='white'>Aktionen</font> </th>
+        <tbody id='result'>
+
+ <?php
+        foreach($show_data as $key => $val)
+        {
+        echo"<tr bgcolor=#FFFFFF class='tr'>";
+
+            echo "<td>",$val->id,"</td>";
+            echo "<td>",$val->Buchname,"</td>";
+            echo "<td>",$val->Autor,"</td>";
+            echo "<td style='display:'none;'>",$val->Ablageort,"</td>";
+            echo "<td>",$val->genre,"</td>";
+            echo "<td> <form action = 'loeschen.php' method='POST'> <input type='hidden' name='id' value='".$val->id."' ><button> löschen</button> </form> </td>";
+            echo "</tr>";
+
+        }
+        echo "</tbody>";
+        echo "</table>";
+    #var_dump($show_data);
+
+    }
+
+    else
+
+    echo "Es existieren keine Bücher in der Bibliothek.";
+
+
+ ?>
+    <script>
+
+    function search()
+    {
+        var search = document.getElementById('search').value;
+        var table = document.getElementById('result');
+        var rows = document.getElementsByClassName('tr');
+        var on = 0;
+        for ( var i = 0; i < rows.length; i++ )
+        {
+          var td = rows[i].getElementsByTagName('td')[1];
+              if (td)
+              {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.indexOf(search) > -1)
+                {
+                  rows[i].style.display = '';
+                }
+                else
+                {
+                  rows[i].style.display = 'none';
+                }
+              }
+        }
+    }
+
+
+
+    </script>
+
+
+
+
+
+    <font color="white" >
+        <fieldset style="margin: 5px 50px; border-color:#000000;">
+            <h2>Suchen</h2>
+        </fieldset>
+
+
+        <fieldset style = "width: 600px; margin:  25px 50px; border-color: #2B579E; border-radius: 20px;">
+            <fieldset style="margin: 15px 15px; border-color:#000000;">
+
+
+
+
+
+                Buchname:
+                <br>
+                <br>
+                <input id='search' name='search' type='text' onKeyup='search();'>
+
+                <br>
+                <br>
+
+        </fieldset>
+    </font>
+
+</form>
+
+<div class="cube">
+    <div class="top"></div>
+    <div>
+        <span style="--i:0;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+    </div>
+
+</div>
+
+<script>
+
+    function search()
+    {
+        var search = document.getElementById('search').value;
+        var table = document.getElementById('result');
+        var rows = document.getElementsByClassName('tr');
+        var on = 0;
+        for ( var i = 0; i < rows.length; i++ )
+        {
+          var td = rows[i].getElementsByTagName('td')[1];
+              if (td)
+              {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.indexOf(search) > -1)
+                {
+                  rows[i].style.display = '';
+                }
+                else
+                {
+                  rows[i].style.display = 'none';
+                }
+              }
+        }
+    }
+
+
+
+    </script>
+
+<!--  bei "font-size" waren es 16px   -->
+
+<footer  style="color: white; font-size: 16px; padding:20px; font-family:arial;">
+
+    <a style="color: white; text-decoration:none; padding: 25px" href="about_me.html">About Me </a>
+
+    ©random stuff
+
+</footer>
+</body>
+</html>
